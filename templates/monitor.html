@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Centro de Monitoreo | {{ empresa }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="/static/velte-simbolo.png">
+  <link rel="stylesheet" href="/static/monitor.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="marca">
+      <img src="/static/velte-simbolo-blanco.png" alt="{{ empresa }}">
+      <div>
+        <p class="empresa">{{ empresa }} · Centro de monitoreo</p>
+        <h1>bd_hm_retail <span>· Tienda en línea H&amp;M Plaza Satélite</span></h1>
+      </div>
+    </div>
+    <div class="reloj"><span id="reloj">--:--:--</span><small id="latido">● en vivo</small></div>
+  </header>
+
+  <section id="estado" class="estado ok">
+    <div class="estado-icono" id="estado-icono">✓</div>
+    <div>
+      <h2 id="estado-titulo">Todo en orden</h2>
+      <p id="estado-texto">Sin alertas. El inventario de la tienda en línea es consistente.</p>
+    </div>
+    <div class="modo" id="modo"></div>
+  </section>
+
+  <section class="tiles">
+    <div class="tile"><span>Servidor MySQL</span><b id="t-bd">—</b><small id="t-uptime"></small></div>
+    <div class="tile"><span>Conexiones activas</span><b id="t-conex">—</b><small>Threads_connected</small></div>
+    <div class="tile"><span>Ventas en línea hoy</span><b id="t-ventas">—</b><small id="t-monto"></small></div>
+    <div class="tile"><span>Alertas</span><b id="t-alertas">—</b><small>tabla ALERTA</small></div>
+  </section>
+
+  <section class="paneles">
+    <div class="panel">
+      <h3>Inventario de la tienda en línea <small>INVENTARIO · sucursal 1</small></h3>
+      <table><thead><tr><th>Producto</th><th>Color</th><th class="num">Stock</th></tr></thead><tbody id="inventario"></tbody></table>
+    </div>
+    <div class="panel">
+      <h3>Alertas <small>generadas por el trigger audita_inventario_update</small></h3>
+      <table><thead><tr><th>Hora</th><th>Tipo</th><th>Descripción</th><th>Correo</th></tr></thead><tbody id="alertas"></tbody></table>
+    </div>
+    <div class="panel">
+      <h3>Bitácora de auditoría <small>AUDITORIA_INVENTARIO</small></h3>
+      <table><thead><tr><th>Hora</th><th>Usuario</th><th>Producto</th><th class="num">Antes → Después</th></tr></thead><tbody id="auditoria"></tbody></table>
+    </div>
+    <div class="panel">
+      <h3>Últimas ventas en línea <small>VENTA + CLIENTE + DETALLE_VENTA</small></h3>
+      <table><thead><tr><th>Folio</th><th>Cliente</th><th>Producto</th><th class="num">Total</th></tr></thead><tbody id="ventas"></tbody></table>
+    </div>
+  </section>
+
+  <script src="/static/monitor.js"></script>
+</body>
+</html>

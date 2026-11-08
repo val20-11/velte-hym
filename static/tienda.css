@@ -1,0 +1,158 @@
+:root {
+  --rojo: #e50010;
+  --tinta: #222;
+  --gris: #6b6b6b;
+  --linea: #e5e1dc;
+  --fondo: #faf9f8;
+  --crema: #f3eee8;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Jost", "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--tinta);
+  background: var(--fondo);
+}
+a { color: inherit; text-decoration: none; }
+
+.aviso {
+  background: #111; color: #fff; text-align: center;
+  font-size: 13px; letter-spacing: .04em; padding: 8px 16px;
+}
+
+.encabezado {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 14px 32px; background: #fff; border-bottom: 1px solid var(--linea);
+  position: sticky; top: 0; z-index: 5;
+}
+.menu { display: flex; gap: 22px; font-size: 15px; }
+.menu a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.logo img { height: 42px; display: block; }
+.iconos { display: flex; justify-content: flex-end; align-items: center; gap: 22px; font-size: 14px; }
+.bolsa-icono { position: relative; display: flex; }
+.bolsa-icono b {
+  position: absolute; right: -8px; top: -6px; background: var(--rojo); color: #fff;
+  font-size: 11px; min-width: 18px; height: 18px; border-radius: 9px;
+  display: grid; place-items: center; padding: 0 4px;
+}
+
+.portada {
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 24px;
+  background: linear-gradient(120deg, #efe5da 0%, #f6efe7 55%, #e9ddd0 100%);
+  padding: 64px 7vw; min-height: 380px; overflow: hidden;
+}
+.etiqueta { text-transform: uppercase; letter-spacing: .18em; font-size: 12px; color: var(--gris); margin: 0 0 10px; }
+.portada h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 500; line-height: 1.02; margin: 0 0 16px; letter-spacing: -.01em; }
+.portada p { max-width: 420px; color: #4a4a4a; font-size: 17px; }
+.boton-claro {
+  display: inline-block; margin-top: 10px; padding: 13px 28px; border: 1px solid var(--tinta);
+  background: var(--tinta); color: #fff; font: inherit; font-size: 15px; cursor: pointer;
+}
+.boton-claro:hover { background: #fff; color: var(--tinta); }
+.portada-arte { position: relative; height: 300px; }
+.arte { position: absolute; background: #fff; border-radius: 4px; box-shadow: 0 18px 40px -20px rgba(60, 40, 20, .45); padding: 8px; }
+.arte .prenda-svg, .arte img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.a1 { width: 210px; height: 250px; left: 8%; top: 20px; transform: rotate(-4deg); }
+.a2 { width: 180px; height: 220px; left: 46%; top: 0; transform: rotate(3deg); }
+.a3 { width: 140px; height: 150px; left: 62%; top: 150px; transform: rotate(-2deg); }
+
+.catalogo { max-width: 1280px; margin: 0 auto; padding: 48px 32px 64px; }
+.catalogo-titulo { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.catalogo-titulo h2 { font-weight: 500; font-size: 28px; margin: 0; }
+.catalogo-titulo span { color: var(--gris); font-size: 14px; }
+
+.rejilla { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; }
+.tarjeta { background: transparent; }
+.foto {
+  position: relative; aspect-ratio: 3 / 4; display: grid; place-items: center;
+  background: var(--crema); overflow: hidden;
+}
+.foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.foto.con-foto { aspect-ratio: 1 / 1; }
+.tarjeta:hover .foto img { transform: scale(1.04); }
+.foto .prenda-svg { width: 68%; height: 68%; transition: transform .35s ease; }
+.tarjeta:hover .foto .prenda-svg { transform: scale(1.06) rotate(-1deg); }
+.tono-negro, .tono-azul { background: #ebedf0; }
+.tono-gris { background: #eeeeec; }
+.tono-rosa { background: #f6eaec; }
+.tono-amarillo { background: #f6f0de; }
+.tono-beige, .tono-cafe { background: #f3ece2; }
+.tono-verde { background: #eaefe7; }
+.tono-rojo { background: #f5e7e6; }
+
+.insignia {
+  position: absolute; left: 12px; top: 12px; font-size: 12px; font-weight: 500;
+  padding: 5px 10px; letter-spacing: .03em; background: #fff;
+}
+.insignia.ultima { background: var(--rojo); color: #fff; animation: latido 1.6s ease-in-out infinite; }
+.insignia.pocas { color: var(--rojo); }
+.insignia.agotado { background: #111; color: #fff; }
+@keyframes latido { 50% { transform: scale(1.06); } }
+
+.datos { padding: 12px 2px 0; }
+.datos h3 { font-size: 15px; font-weight: 500; margin: 0 0 4px; }
+.detalle { color: var(--gris); font-size: 13px; margin: 0 0 6px; }
+.precio { font-weight: 600; margin: 0 0 10px; }
+.precio.grande { font-size: 24px; }
+.boton-comprar {
+  width: 100%; padding: 11px; font: inherit; font-size: 14px; cursor: pointer;
+  background: #fff; border: 1px solid var(--tinta); transition: background .15s, color .15s;
+}
+.boton-comprar:hover:not(:disabled) { background: var(--tinta); color: #fff; }
+.boton-comprar:disabled { color: #aaa; border-color: #ddd; cursor: not-allowed; }
+.sin-stock .foto { filter: grayscale(.8); opacity: .65; }
+
+.demo-caja {
+  margin-top: 40px; padding: 16px 20px; border: 1px dashed #bbb; background: #fff;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 14px;
+}
+.demo-caja button { padding: 8px 16px; font: inherit; cursor: pointer; background: var(--rojo); color: #fff; border: 0; }
+
+.pie { border-top: 1px solid var(--linea); background: #fff; text-align: center; padding: 32px 16px; color: var(--gris); font-size: 13px; }
+.pie img { height: 30px; }
+
+/* ventana de pago */
+.fondo-modal { position: fixed; inset: 0; background: rgba(20, 16, 12, .45); display: grid; place-items: center; z-index: 10; padding: 16px; }
+.fondo-modal[hidden] { display: none; }
+.modal { position: relative; background: #fff; width: min(720px, 100%); max-height: 92vh; overflow: auto; animation: subir .25s ease; }
+@keyframes subir { from { transform: translateY(16px); opacity: 0; } }
+.cerrar { position: absolute; right: 10px; top: 6px; border: 0; background: none; font-size: 28px; cursor: pointer; z-index: 1; }
+.pago { display: grid; grid-template-columns: 1fr 1.2fr; }
+.pago-foto { display: grid; place-items: center; min-height: 320px; }
+.pago-foto .prenda-svg { width: 70%; }
+.pago-foto img { width: 100%; height: 100%; object-fit: cover; }
+.pago-datos { padding: 28px; }
+.pago-datos h3 { margin: 0 0 4px; font-weight: 500; font-size: 20px; }
+.pago-datos label { display: block; font-size: 12px; color: var(--gris); margin-bottom: 10px; }
+.pago-datos input.falta { border-color: #d0021b; outline: 2px solid #d0021b33; }
+.pago-datos input { display: block; width: 100%; margin-top: 4px; padding: 10px; border: 1px solid var(--linea); font: inherit; color: var(--tinta); background: var(--fondo); }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.boton-pagar {
+  width: 100%; margin-top: 8px; padding: 14px; font: inherit; font-size: 15px; cursor: pointer;
+  background: var(--rojo); color: #fff; border: 0; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.boton-pagar:disabled { background: #b5444b; cursor: progress; }
+.girando { width: 16px; height: 16px; border: 2px solid rgba(255, 255, 255, .4); border-top-color: #fff; border-radius: 50%; animation: girar .8s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.resultado { text-align: center; padding: 44px 28px 36px; }
+.resultado h3 { font-weight: 500; font-size: 22px; margin: 12px 0 6px; }
+.palomita, .tache { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; font-size: 30px; color: #fff; }
+.palomita { background: #2f8a4a; }
+.tache { background: var(--rojo); }
+.folio { font-size: 15px; }
+
+@media (max-width: 900px) {
+  .rejilla { grid-template-columns: repeat(2, 1fr); gap: 22px 14px; }
+  .portada { grid-template-columns: 1fr; padding: 40px 16px; }
+  .portada-arte { height: 220px; }
+  .a1 { width: 150px; height: 180px; } .a2 { width: 130px; height: 160px; } .a3 { width: 100px; height: 110px; top: 110px; }
+}
+@media (max-width: 600px) {
+  .encabezado { padding: 12px 16px; }
+  .menu { gap: 14px; font-size: 14px; }
+  .ocultar-movil { display: none; }
+  .logo img { height: 32px; }
+  .catalogo { padding: 32px 16px 48px; }
+  .pago { grid-template-columns: 1fr; }
+  .pago-foto { min-height: 200px; }
+}

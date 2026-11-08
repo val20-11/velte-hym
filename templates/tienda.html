@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H&amp;M | Tienda en línea</title>
+  <link rel="icon" href="/static/hm-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/tienda.css">
+</head>
+<body>
+  <div class="aviso">Envío gratis en compras mayores a $799 &nbsp;·&nbsp; Recoge en H&amp;M Plaza Satélite</div>
+
+  <header class="encabezado">
+    <nav class="menu">
+      <a href="#">Mujer</a><a href="#">Hombre</a><a href="#">Niños</a><a href="#" class="ocultar-movil">Sport</a><a href="#" class="ocultar-movil">Beauty</a>
+    </nav>
+    <a href="/" class="logo"><img src="/static/hm-logo.png" alt="H&M"></a>
+    <div class="iconos">
+      <span class="ocultar-movil">Iniciar sesión</span>
+      <span class="bolsa-icono" aria-label="Bolsa">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <b id="contador-bolsa">0</b>
+      </span>
+    </div>
+  </header>
+
+  <section class="portada">
+    <div class="portada-texto">
+      <p class="etiqueta">Otoño · Invierno 2026</p>
+      <h1>Capas que<br>cuentan historias</h1>
+      <p>Mezclilla, tejidos suaves y siluetas oversize. La nueva colección ya está aquí.</p>
+      <a href="#catalogo" class="boton-claro">Comprar ahora</a>
+    </div>
+    <div class="portada-arte" id="portada-arte"></div>
+  </section>
+
+  <main id="catalogo" class="catalogo">
+    <div class="catalogo-titulo">
+      <h2>Lo más vendido</h2>
+      <span>Disponibilidad de H&amp;M Plaza Satélite · se actualiza en tiempo real</span>
+    </div>
+    <div class="rejilla" id="rejilla"></div>
+
+    {% if demo %}
+    <div class="demo-caja">
+      <b>Modo demo</b> — dos clientes compran en línea la chamarra al mismo tiempo
+      <button id="boton-doble">Simular 2 clientes</button>
+      <span id="demo-resultado"></span>
+    </div>
+    {% endif %}
+  </main>
+
+  <footer class="pie">
+    <img src="/static/hm-logo.png" alt="H&M">
+    <p>Proyecto de Administración de Bases de Datos · Tienda de demostración sobre <code>bd_hm_retail</code></p>
+  </footer>
+
+  <!-- ventana de pago -->
+  <div class="fondo-modal" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="cerrar" id="cerrar-modal" aria-label="Cerrar">×</button>
+      <div id="modal-contenido"></div>
+    </div>
+  </div>
+
+  <script src="/static/prendas.js"></script>
+  <script src="/static/tienda.js"></script>
+</body>
+</html>
